@@ -1,0 +1,27 @@
+</html>
+<html>
+  <head>
+    <title>SwitchStory</title>
+  </head>
+  <body>
+    <p style="font-size: large;" id="result">{{ story }}</p>
+    <form method="POST">
+      <input name="word"/>
+    </form>
+    <span>It is <span id="turn">{{ game.curr_turn }}</span>'s turn!</span>
+    <br />
+    <span style="color:red;">{{ error }}</span>
+<script type="text/javascript">
+ var urlSplit = window.location.href.split('/')
+ var gameid = urlSplit[urlSplit.length-1]
+setInterval(function(){
+  fetch("/gamedata/"+gameid) // Any output from the script will go to the "result" div
+  .then(response => response.json())
+  .catch(error => document.getElementById("result").innerHTML = error)
+  .then(response => {
+    document.getElementById("result").innerHTML = response["story"];
+    document.getElementById("turn").innerHTML = response["curr_turn"];
+  })
+}, 1000); // Poll every 1000ms
+</script>
+</html>
