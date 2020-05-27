@@ -7,8 +7,8 @@ from opentracing.ext import tags
 from opentracing_instrumentation.client_hooks import install_all_patches
 from flask_opentracing import FlaskTracer
 
-app = Flask('profainity-svc')
-init_tracer('profainity-svc')
+app = Flask('profanity-svc')
+init_tracer('profanity-svc')
 install_all_patches()
 flask_tracer = FlaskTracer(opentracing.tracer, True, app)
 
@@ -23,9 +23,9 @@ def censor(story):
         return res.text
 
 
-@app.route('/profainity', methods=['POST'])
+@app.route('/profanity', methods=['POST'])
 @flask_tracer.trace()
-def handle_profainity():
+def handle_profanity():
     story = request.json['story']
     censored_story = censor(story)
     return censored_story

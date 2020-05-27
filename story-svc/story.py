@@ -31,7 +31,7 @@ def censor_story(story):
         'censor_story',
     ) as scope:
         censored_story = requests.post(
-            'http://localhost:8002/profainity', json={"story": story}).text
+            'http://localhost:8002/profanity', json={"story": story}).text
         scope.span.log_kv({'story': story, 'censored_story': censored_story})
         return censored_story
 
