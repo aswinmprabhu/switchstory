@@ -8,7 +8,7 @@ future==0.18.2
 idna==2.9
 itsdangerous==1.1.0
 jaeger-client==4.3.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 opentracing==2.3.0
 opentracing-instrumentation==3.2.1
